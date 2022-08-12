@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
+        <title>Data Pemohon Bantuan Gerobak Cahaya</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="card mt-5">
+                <div class="card-header text-center">
+                    CRUD Data Pemohon - <a href="https://www.bantuangerobakcahaya.com/pemohon/laravel" target="_blank">www.bantuangerobakcahaya.com</a>
+                </div>
+                <div class="card-body">
+                <a href="/pemohon/create" class="btn btn-primary">Input Pegawai Baru</a>
+                    <br/>
+                    <br/>
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>NIK</th>
+                                <th>Nama</th>
+                                <th>No Telp</th>
+                                <th>Created At</th>
+                                <th>Status</th>
+                                <th>Opsi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($pemohon as $p)
+                            <tr>
+                                <td>{{ $p->NIK }}</td>
+                                <td>{{ $p->nama }}</td>
+                                <td>{{ $p->telp }}</td>
+                                <td>{{ $p->created_at }}</td>
+                                <td>{{ $p->Status }}</td>
+                                <td>
+                                    <a href="/pemohon/process/{{ $p->id }}" class="btn btn-success">Process</a>
+                                    <a href="/pemohon/detail/{{ $p->id }}" class="btn btn-warning">Detail</a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
